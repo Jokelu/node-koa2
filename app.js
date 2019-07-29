@@ -32,12 +32,12 @@ app.use(async (ctx, next) => {
       let jwt = new JwtUtil(token);
       let result = jwt.verifyToken();
       if (result == "err") {
-        ctx.body = { success: false, message: "登录已过期,请重新登录" };
+        ctx.body = { success: false,code:999, message: "登录已过期,请重新登录" };
       } else {
         await next();
       }
     } else {
-      ctx.body = { success: 403, message: "登录已过期,请重新登录" };
+      ctx.body = { success: 403,code:999, message: "登录已过期,请重新登录" };
     }
   } else {
     await next();
